@@ -3,6 +3,10 @@
     margin: 1em;
 }
 
+.artworks__artwork-block--hide {
+  display: none;
+}
+
 .artworks__text-content-wrap,
 .artworks__media-content-wrap {
   border: 2px dotted black;

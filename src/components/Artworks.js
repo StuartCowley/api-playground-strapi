@@ -10,7 +10,7 @@ const Artworks = ({ artworksData }) => {
           <p>Artist: {artwork.attributes.artist.data.attributes.name}</p>
           <p>Medium: {artwork.attributes.medium}</p>
           <p>Description: {artwork.attributes.description}</p>
-          {artwork.attributes.textContent !== '' && <div className='artworks__text-content-wrap'>
+          {artwork.attributes.textContent && <div className='artworks__text-content-wrap'>
             <p>Text Content: </p>
             <p className='artworks__text-content'>{artwork.attributes.textContent}</p>
           </div>

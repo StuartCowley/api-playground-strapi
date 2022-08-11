@@ -9,12 +9,18 @@ const Artists = ({ artistsData }) => {
           <h2>Name (pseudonym if anon): {artist.attributes.anonymous ? artist.attributes.pseudonym : artist.attributes.name}</h2>
           <p>About the artist: {artist.attributes.introduction}</p>
           <p>Artists works: </p>
-          {
-            artist.attributes.artworks.data.map(artist => {
-              return (
-                <p key={artist.id}>{artist.attributes.title}</p>
-              )
-            })
+          {artist.attributes.artworks.data.length === 0 && <p>Nothing added yet</p>}
+          {artist.attributes.artworks.data.length > 0 && <>
+            <ul className='artists__list-of-work'>
+              {
+                artist.attributes.artworks.data.map(artist => {
+                  return (
+                    <li key={artist.id}>{artist.attributes.title}</li>
+                  )
+                })
+              }
+            </ul>
+          </>
           }
         </div>
       )
