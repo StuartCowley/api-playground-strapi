@@ -1,0 +1,19 @@
+.app {
+    text-align: center;
+  }
+  
+  .app__form {
+    margin: 1em;
+  }
+  
+  .app__artwork-block--hide {
+    display: none;
+  }
+  
+  .app__header {
+    background-color: #282c34;
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+  
