@@ -1,0 +1,14 @@
+.artworks__artwork-block {
+    border: 2px solid blue;
+    margin: 1em;
+}
+
+.artworks__text-content-wrap,
+.artworks__media-content-wrap {
+  border: 2px dotted black;
+  margin: 1em;
+}
+
+.artworks__text-content {
+  white-space: pre-line;
+}

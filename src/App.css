@@ -1,19 +1,16 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app__form {
+  margin: 1em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app__artwork-block--hide {
+  display: none;
 }
 
-.App-header {
+.app__header {
   background-color: #282c34;
   display: flex;
   justify-content: center;

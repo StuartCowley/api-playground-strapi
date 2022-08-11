@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './app.css';
+import getData from './requests/getData';
 
-function App() {
+import Artists from './components/Artists';
+import Artworks from './components/Artworks';
+import Collections from './components/Collections';
+
+const App = () => {
+  const [artworksData, setArtworksData] = useState([])
+  const [collectionsData, setCollectionsData] = useState([])
+  const [artistsData, setArtistsData] = useState([])
+  const [selectType, setSelectType] = useState('artworks')
+
+  const handleSelectChange = (e) => {
+    setSelectType(e.target.value)
+  }
+
+  const handleFetch = (e) => {
+    e.preventDefault();
+    getData(setArtistsData, setArtworksData, setCollectionsData, selectType)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="app">
+      <header className="app__header">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Booth Centre API playground
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <div className='app__form'>
+        <form>
+          <label htmlFor='type'>What are you looking for? </label>
+          <select name="data" id="type" onChange={handleSelectChange}>
+            <option value="artworks">Artworks</option>
+            <option value="collections">Collections</option>
+            <option value="artists">Artists</option>
+          </select>
+          <button onClick={handleFetch}>Fetch!</button>
+        </form>
+      </div>
+
+      <Artworks artworksData={artworksData} />
+      <Collections collectionsData={collectionsData} />
+      <Artists artistsData={artistsData} />
+
     </div>
   );
 }
