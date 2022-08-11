@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getData = (setArtistsData, setArtworksData, setCollectionsData, type) => {
-  let endpoint = `http://localhost:1337/api/${type}?populate=%2A`;
+  let endpoint = `${process.env.REACT_APP_SITE_URL}/api/${type}?populate=%2A`;
 
   return axios
     .get(endpoint)
