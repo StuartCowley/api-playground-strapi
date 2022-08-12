@@ -7,7 +7,7 @@ const Artworks = ({ artworksData }) => {
       return (
         <div key={artwork.id} className={`artworks__artwork-block ${artwork.attributes.hide ? "artworks__artwork-block--hide" : ""}`}>
           <h2>Title: {artwork.attributes.title}</h2>
-          <p>Artist: {artwork.attributes.artist.data.attributes.name}</p>
+          <p>Artist: {artwork.attributes.artist.data.attributes.anonymous ? artwork.attributes.artist.data.attributes.pseudonym : artwork.attributes.artist.data.attributes.name}</p>
           <p>Medium: {artwork.attributes.medium}</p>
           <p>Description: {artwork.attributes.description}</p>
           {artwork.attributes.textContent && <div className='artworks__text-content-wrap'>
