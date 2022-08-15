@@ -17,7 +17,7 @@ const Artworks = ({ artworksData }) => {
           }
           {
             artwork.attributes.medium === 'Painting' && <div className='artworks__media-content-wrap'>
-              <p>Media Content:</p> <img alt={artwork.attributes.mediaContent.data.attributes.alternativeText} src={`${artwork.attributes.mediaContent.data.attributes.url}`} />
+              <p>Media Content:</p> <img alt={artwork.attributes.mediaContent.data.attributes.alternativeText} src={`${process.env.REACT_APP_SITE_URL}${artwork.attributes.mediaContent.data.attributes.url}`} />
             </div>
           }
         </div>
