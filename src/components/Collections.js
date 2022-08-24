@@ -4,8 +4,12 @@ import '../styles/collections.css'
 const Collections = ({ collectionsData }) => {
   return (
     collectionsData.map(collection => {
+      if (collection.attributes.hide) {
+        return null;
+      }
+
       return (
-        <div key={collection.id} className={`collections__artwork-block ${collection.attributes.hide ? "collections__artwork-block--hide" : ""}`}>
+        <div key={collection.id} className={"collections__artwork-block"}>
           <h2>Title: {collection.attributes.title}</h2>
           <p>Description: {collection.attributes.description}</p>
           {
