@@ -1,16 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './app.css';
 import getData from './requests/getData';
+import getStaticContent from './requests/getSiteContent';
 
 import Artists from './components/Artists';
 import Artworks from './components/Artworks';
 import Collections from './components/Collections';
 
 const App = () => {
+  const initialPageValues = {
+    title: "",
+    introductionText: ""
+  }
   const [artworksData, setArtworksData] = useState([])
   const [collectionsData, setCollectionsData] = useState([])
   const [artistsData, setArtistsData] = useState([])
   const [selectType, setSelectType] = useState('artworks')
+
+  const [artistsPageCopy, setArtistsPageCopy] = useState(initialPageValues)
+  const [artworksPageCopy, setArtworksPageCopy] = useState(initialPageValues)
+  const [collectionsPageCopy, setCollectionsPageCopy] = useState(initialPageValues)
+
+  useEffect(() => {
+    getStaticContent(
+      setArtistsPageCopy,
+      setArtworksPageCopy,
+      setCollectionsPageCopy
+    );
+  }, []);
 
   const handleSelectChange = (e) => {
     setSelectType(e.target.value)
@@ -40,9 +57,9 @@ const App = () => {
         </form>
       </div>
 
-      <Artworks artworksData={artworksData} />
-      <Collections collectionsData={collectionsData} />
-      <Artists artistsData={artistsData} />
+      {selectType === "artworks" && <Artworks artworksData={artworksData} pageCopy={artworksPageCopy} />}
+      {selectType === "collections" && <Collections collectionsData={collectionsData} pageCopy={collectionsPageCopy} />}
+      {selectType === "artists" && <Artists artistsData={artistsData} pageCopy={artistsPageCopy} />}
 
     </div>
   );
